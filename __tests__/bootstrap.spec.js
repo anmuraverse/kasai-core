@@ -23,7 +23,7 @@ test.beforeEach(spec => {
   spec.context.reportSpy.resetHistory()
 })
 
-test.serial('exit', async spec => {
+test.serial('Process Exit Event', async spec => {
   const { infoSpy, warnSpy } = spec.context
 
   /**
@@ -43,7 +43,7 @@ test.serial('exit', async spec => {
   spec.true(warnSpy.calledOnce)
 })
 
-test.serial('SIGHUP', async spec => {
+test.serial('Process Signal Event: SIGHUP', async spec => {
   const { reportSpy, stopSpy, closeSpy } = spec.context
 
   /**
@@ -59,7 +59,7 @@ test.serial('SIGHUP', async spec => {
   spec.true(closeSpy.calledOnce)
 })
 
-test.serial('SIGINT', async spec => {
+test.serial('Process Signal Event: SIGINT', async spec => {
   const { reportSpy, stopSpy, closeSpy } = spec.context
 
   /**
@@ -75,7 +75,7 @@ test.serial('SIGINT', async spec => {
   spec.true(closeSpy.calledOnce)
 })
 
-test.serial('SIGTERM', async spec => {
+test.serial('Process Signal Event: SIGTERM', async spec => {
   const { reportSpy, stopSpy, closeSpy } = spec.context
 
   /**
@@ -97,7 +97,7 @@ test.serial('SIGTERM', async spec => {
   spec.true(closeSpy.calledTwice)
 })
 
-test.serial('warning', async spec => {
+test.serial('Process Warning Event', async spec => {
   const { reportSpy } = spec.context
 
   /**

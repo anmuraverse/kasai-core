@@ -6,7 +6,7 @@
 import test from 'ava'
 import { ServiceError } from '../lib/error'
 
-test('new KasaiError', spec => {
+test('Create Service Error', spec => {
   let error = new ServiceError('message')
   const { code, stack } = error
   spec.true(error instanceof Error)
@@ -53,7 +53,7 @@ test('new KasaiError', spec => {
   spec.throws(() => new ServiceError([1, 2]))
 })
 
-test('#addLabels', spec => {
+test('Adding Labels', spec => {
   const error = new ServiceError('message')
     .addLabels('A', 'B')
     .addLabels('c', 'D')
@@ -62,7 +62,7 @@ test('#addLabels', spec => {
   spec.deepEqual(labels, ['A', 'B', 'C', 'D'])
 })
 
-test('#addMeta', spec => {
+test('Adding Meta', spec => {
   const error = new ServiceError('message')
     .addMeta('alpha', { one: 1 })
     .addMeta('alpha', { two: 2 })
@@ -71,174 +71,174 @@ test('#addMeta', spec => {
   spec.deepEqual(error.meta, { alpha: { one: 1, two: 2 }, bravo: 'second' })
 })
 
-test('.badRequest', spec => {
+test('Bad Request', spec => {
   const error = ServiceError.badRequest('message')
   spec.is(error.status, 400)
 })
 
-test('.unauthorized', spec => {
+test('Unauthorized', spec => {
   const error = ServiceError.unauthorized('message')
   spec.is(error.status, 401)
 })
 
-test('.paymentRequired', spec => {
+test('Payment Required', spec => {
   const error = ServiceError.paymentRequired('message')
   spec.is(error.status, 402)
 })
 
-test('.forbidden', spec => {
+test('Forbidden', spec => {
   const error = ServiceError.forbidden('message')
   spec.is(error.status, 403)
 })
 
-test('.notFound', spec => {
+test('Not Found', spec => {
   const error = ServiceError.notFound('message')
   spec.is(error.status, 404)
 })
 
-test('.methodNotAllowed', spec => {
+test('Method Not Allowed', spec => {
   const error = ServiceError.methodNotAllowed('message', ['GET', 'POST'])
   const { allowed } = error.meta
   spec.is(error.status, 405)
   spec.deepEqual(allowed, ['GET', 'POST'])
 })
 
-test('.notAcceptable', spec => {
+test('Not Acceptable', spec => {
   const error = ServiceError.notAcceptable('message')
   spec.is(error.status, 406)
 })
 
-test('.proxyAuthRequired', spec => {
+test('Proxy Auth Required', spec => {
   const error = ServiceError.proxyAuthRequired('message')
   spec.is(error.status, 407)
 })
 
-test('.requestTimeout', spec => {
+test('Request Timeout', spec => {
   const error = ServiceError.requestTimeout('message')
   spec.is(error.status, 408)
 })
 
-test('.conflict', spec => {
+test('Conflict', spec => {
   const error = ServiceError.conflict('message')
   spec.is(error.status, 409)
 })
 
-test('.gone', spec => {
+test('Gone', spec => {
   const error = ServiceError.gone('message')
   spec.is(error.status, 410)
 })
 
-test('.lengthRequired', spec => {
+test('Length Required', spec => {
   const error = ServiceError.lengthRequired('message')
   spec.is(error.status, 411)
 })
 
-test('.preconditionFailed', spec => {
+test('Precondition Failed', spec => {
   const error = ServiceError.preconditionFailed('message')
   spec.is(error.status, 412)
 })
 
-test('.payloadTooLarge', spec => {
+test('Payload Too Large', spec => {
   const error = ServiceError.payloadTooLarge('message')
   spec.is(error.status, 413)
 })
 
-test('.uriTooLong', spec => {
+test('URI Too Long', spec => {
   const error = ServiceError.uriTooLong('message')
   spec.is(error.status, 414)
 })
 
-test('.unsupportedMediaType', spec => {
+test('Unsupported Media Type', spec => {
   const error = ServiceError.unsupportedMediaType('message')
   spec.is(error.status, 415)
 })
 
-test('.rangeNotSatisfiable', spec => {
+test('Range Not Satisfiable', spec => {
   const error = ServiceError.rangeNotSatisfiable('message')
   spec.is(error.status, 416)
 })
 
-test('.expectationFailed', spec => {
+test('Expectation Failed', spec => {
   const error = ServiceError.expectationFailed('message')
   spec.is(error.status, 417)
 })
 
-test('.kermitDrinksTea', spec => {
+test('Kermit Drinks Tea', spec => {
   const error = ServiceError.kermitDrinksTea('message')
   spec.is(error.status, 418)
 })
 
-test('.misdirectedRequest', spec => {
+test('Misdirected Request', spec => {
   const error = ServiceError.misdirectedRequest('message')
   spec.is(error.status, 421)
 })
 
-test('.unprocessableEntity', spec => {
+test('Unprocessable Entity', spec => {
   const error = ServiceError.unprocessableEntity('message')
   spec.is(error.status, 422)
 })
 
-test('.locked', spec => {
+test('Locked', spec => {
   const error = ServiceError.locked('message')
   spec.is(error.status, 423)
 })
 
-test('.failedDependency', spec => {
+test('Failed Dependency', spec => {
   const error = ServiceError.failedDependency('message')
   spec.is(error.status, 424)
 })
 
-test('.unorderedCollection', spec => {
+test('Unordered Collection', spec => {
   const error = ServiceError.unorderedCollection('message')
   spec.is(error.status, 425)
 })
 
-test('.upgradeRequired', spec => {
+test('Upgrade Required', spec => {
   const error = ServiceError.upgradeRequired('message')
   spec.is(error.status, 426)
 })
 
-test('.preconditionRequired', spec => {
+test('Precondition Required', spec => {
   const error = ServiceError.preconditionRequired('message')
   spec.is(error.status, 428)
 })
 
-test('.tooManyRequests', spec => {
+test('Too Many Requests', spec => {
   const error = ServiceError.tooManyRequests('message')
   spec.is(error.status, 429)
 })
 
-test('.fieldsTooLarge', spec => {
+test('Fields Too Large', spec => {
   const error = ServiceError.fieldsTooLarge('message')
   spec.is(error.status, 431)
 })
 
-test('.legallyUnavailable', spec => {
+test('Legally Unavailable', spec => {
   const error = ServiceError.legallyUnavailable('message')
   spec.is(error.status, 451)
 })
 
-test('.internalServerError', spec => {
+test('Internal Server Error', spec => {
   const error = ServiceError.internalServerError('message')
   spec.is(error.status, 500)
 })
 
-test('.notImplemented', spec => {
+test('Not Implemented', spec => {
   const error = ServiceError.notImplemented('message')
   spec.is(error.status, 501)
 })
 
-test('.badGateway', spec => {
+test('Bad Gateway', spec => {
   const error = ServiceError.badGateway('message')
   spec.is(error.status, 502)
 })
 
-test('.serviceUnavailable', spec => {
+test('Service Unavailable', spec => {
   const error = ServiceError.serviceUnavailable('message')
   spec.is(error.status, 503)
 })
 
-test('.gatewayTimeout', spec => {
+test('Gateway Timeout', spec => {
   const error = ServiceError.gatewayTimeout('message')
   spec.is(error.status, 504)
 })
@@ -248,32 +248,32 @@ test('.unsupportedHttpVersion', spec => {
   spec.is(error.status, 505)
 })
 
-test('.variantAlsoNegotiates', spec => {
+test('Variant Also Negotiates', spec => {
   const error = ServiceError.variantAlsoNegotiates('message')
   spec.is(error.status, 506)
 })
 
-test('.insufficientStorage', spec => {
+test('Insufficient Storage', spec => {
   const error = ServiceError.insufficientStorage('message')
   spec.is(error.status, 507)
 })
 
-test('.loopDetected', spec => {
+test('Loop Detected', spec => {
   const error = ServiceError.loopDetected('message')
   spec.is(error.status, 508)
 })
 
-test('.bandwidthExceeded', spec => {
+test('Bandwidth Exceeded', spec => {
   const error = ServiceError.bandwidthExceeded('message')
   spec.is(error.status, 509)
 })
 
-test('.notExtended', spec => {
+test('Not Extended', spec => {
   const error = ServiceError.notExtended('message')
   spec.is(error.status, 510)
 })
 
-test('.networkAuthRequired', spec => {
+test('Network Auth Required', spec => {
   const error = ServiceError.networkAuthRequired('message')
   spec.is(error.status, 511)
 })

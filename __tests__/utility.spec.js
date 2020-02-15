@@ -6,7 +6,7 @@
 import test from 'ava'
 import * as utility from '../lib/utility'
 
-test('.isLiteral', spec => {
+test('Value is Literal Object', spec => {
   spec.true(utility.isLiteral({}))
   spec.false(utility.isLiteral(undefined))
   spec.false(utility.isLiteral(null))
@@ -19,7 +19,7 @@ test('.isLiteral', spec => {
   spec.false(utility.isLiteral(new Error('test')))
 })
 
-test('.isPrimitive', spec => {
+test('Value is Primitive', spec => {
   spec.true(utility.isPrimitive(undefined))
   spec.true(utility.isPrimitive(null))
   spec.true(utility.isPrimitive(false))
@@ -32,7 +32,7 @@ test('.isPrimitive', spec => {
   spec.false(utility.isPrimitive(new Error('test')))
 })
 
-test('.merge', spec => {
+test('Merge Objects', spec => {
   const a = {
     c: [1, 2, 3],
     d: { m: 1 },
@@ -60,7 +60,7 @@ test('.merge', spec => {
   )
 })
 
-test('.mergeLists', spec => {
+test('Merge Arrays', spec => {
   const a = [1, 2, 3, 4, 5]
   const b = [3, 4, 5, 6, 7]
   const c = [5, 6, 7, 8, 9]
