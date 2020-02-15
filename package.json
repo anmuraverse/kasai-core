@@ -17,7 +17,7 @@
     "docs:lint": "documentation lint lib",
     "js:lint": "standard --fix \"lib/*.js\" \"__tests__/*.js\"",
     "lint": "npm run js:lint && npm run docs:lint",
-    "test": "npm run lint && nyc --reporter=lcov --reporter=text-summary ava",
+    "test": "nyc --reporter=lcov --reporter=text-summary ava --verbose",
     "release": "standard-version"
   },
   "ava": {
@@ -28,7 +28,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "npm run test"
+      "pre-commit": "npm run lint && npm run test"
     }
   },
   "standard": {
