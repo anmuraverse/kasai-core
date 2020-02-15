@@ -1,0 +1,8 @@
+.idea/*
+!.idea/copyright
+!.idea/scopes
+!.idea/vcs.xml
+**/node_modules/
+.nyc_output/
+coverage/
+.env

@@ -1,0 +1,61 @@
+{
+  "name": "@kasai/core",
+  "version": "0.1.0",
+  "description": "Kasai Core manages process lifecycle and orchestrates plugins.",
+  "main": "index.js",
+  "module": "lib/index.js",
+  "directories": {
+    "lib": "lib",
+    "test": "__tests__"
+  },
+  "files": [
+    "lib",
+    "index.js"
+  ],
+  "scripts": {
+    "docs:serve": "documentation serve lib",
+    "docs:lint": "documentation lint lib",
+    "js:lint": "standard --fix \"lib/*.js\" \"__tests__/*.js\"",
+    "lint": "npm run js:lint && npm run docs:lint",
+    "test": "npm run lint && nyc --reporter=lcov --reporter=text-summary ava",
+    "release": "standard-version"
+  },
+  "ava": {
+    "require": [
+      "dotenv/config",
+      "esm"
+    ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run test"
+    }
+  },
+  "standard": {
+    "parser": "babel-eslint"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@gitlab.com:version36/kasai/core.git"
+  },
+  "keywords": [],
+  "author": "Robert Samurai <rob@robertsamurai.net>",
+  "license": "MIT",
+  "dependencies": {
+    "@sentry/node": "^5.12.3",
+    "esm": "^3.2.25",
+    "ms": "^2.1.2",
+    "uuid": "^3.4.0"
+  },
+  "devDependencies": {
+    "ava": "^3.3.0",
+    "babel-eslint": "^10.0.3",
+    "documentation": "^12.1.4",
+    "dotenv": "^8.2.0",
+    "husky": "^4.2.3",
+    "nyc": "^15.0.0",
+    "sinon": "^8.1.1",
+    "standard": "^14.3.1",
+    "standard-version": "^7.1.0"
+  }
+}
