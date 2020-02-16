@@ -1,6 +1,6 @@
 {
   "name": "@kasai/core",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Kasai Core manages process lifecycle and orchestrates plugins.",
   "main": "index.js",
   "module": "lib/index.js",
