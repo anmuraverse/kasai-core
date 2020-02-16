@@ -13,8 +13,8 @@
     "index.js"
   ],
   "scripts": {
-    "docs:serve": "documentation serve lib",
-    "docs:lint": "documentation lint lib",
+    "docs:serve": "documentation serve --watch lib/index.js",
+    "docs:lint": "documentation lint lib/index.js",
     "js:lint": "standard --fix \"lib/*.js\" \"__tests__/*.js\"",
     "lint": "npm run js:lint && npm run docs:lint",
     "test": "nyc --reporter=lcov --reporter=text-summary ava --verbose",
